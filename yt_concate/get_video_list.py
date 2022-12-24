@@ -6,7 +6,7 @@ import json
 from step import Step
 from setting import API_KEY
 class GetVideoList(Step):
-    def Process(self, data, inputs):
+    def Process(self, data, inputs, utils):
         channel_id = inputs['channel_id']
         
 
