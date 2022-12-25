@@ -20,4 +20,17 @@ class Utils:
     
     def get_caption_path(self, url):
         return os.path.join(Captions_Dir, self.get_video_id_from_url(url) +'.txt')
+
+    def caption_file_exist(self, url):
+        path = self.get_caption_path(url)
+        return os.path.exists(path) and os.path.getsize(path) > 0
+
+    def get_video_list_filepath(self, channel_id):
+        return os.path.join(Downloads_Dir, channel_id +'.txt')
+
+    def video_list_file_exist(self, channel_id):
+        path = self.get_video_list_filepath(channel_id)
+        return os.path.exists(path) and os.path.getsize(path) > 0
+
+
         
