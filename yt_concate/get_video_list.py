@@ -8,6 +8,7 @@ from setting import API_KEY
 class GetVideoList(Step):
     def Process(self, data, inputs, utils):
         channel_id = inputs['channel_id']
+        
         if utils.video_list_file_exist(channel_id):
             print('Found exist video list for channel_id', channel_id)
             return self.read_file(utils.get_video_list_filepath(channel_id))
