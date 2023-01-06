@@ -8,6 +8,7 @@ from download_captions import DownloadCaption
 from read_caption import ReadCaption
 from serch import Serch
 from download_video import DownloadVideo
+from edit_video import EditVideo
 from postflight import Postflight
 
 
@@ -21,6 +22,7 @@ def main():
         ReadCaption() ,
         Serch() , 
         DownloadVideo(),
+        EditVideo(),
         Postflight(),
         
     ]
@@ -28,6 +30,7 @@ def main():
     inputs = {        
         'channel_id' : CHANNEL_ID ,
         'serch_word' : 'incredible' ,
+        'limit' : 25 ,
 
         }
     utils = Utils()

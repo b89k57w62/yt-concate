@@ -4,7 +4,7 @@ import os
 from setting import Captions_Dir
 from setting import Downloads_Dir
 from setting import Videos_Dir
-
+from setting import Outputs_Dir
 class Utils:
     def __init__(self):
         pass
@@ -13,7 +13,7 @@ class Utils:
         os.makedirs(Downloads_Dir, exist_ok= True)
         os.makedirs(Captions_Dir, exist_ok= True)
         os.makedirs(Videos_Dir, exist_ok= True)
-    
+        os.makedirs(Outputs_Dir, exist_ok= True)
     
     
     
@@ -34,5 +34,8 @@ class Utils:
         path = self.get_video_list_filepath(channel_id)
         return os.path.exists(path) and os.path.getsize(path) > 0
 
+    def output_filepath(self, channel_id, serch_word):
+        output_filename = channel_id + '_' + serch_word + '.mp4'
+        return os.path.join(Outputs_Dir, output_filename)
 
         
