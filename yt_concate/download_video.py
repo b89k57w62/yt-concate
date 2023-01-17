@@ -1,3 +1,4 @@
+import os
 from pytube import YouTube
 
 from step import Step
@@ -12,10 +13,11 @@ class DownloadVideo(Step):
             
             if utils.video_file_exist(yt):
                 print(f'found existing video file {url} , skip')
-                continue
+                continue 
             
             print('downloading', url)
             YouTube(url).streams.first().download(output_path= Videos_Dir, filename= yt.id + '.mp4')
+            
 
         return data    
 
