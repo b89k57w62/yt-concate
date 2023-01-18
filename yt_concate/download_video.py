@@ -15,12 +15,12 @@ class DownloadVideo(Step):
                 print(f'found existing video file {url} , skip')
                 continue 
             if int(len([name for name in os.listdir(Videos_Dir) if os.path.isfile(os.path.join(Videos_Dir, name))])) > inputs['limit']:
-                print('the numbers of videos are up to 20!!!')
+                print('the numbers of videos are up to 25!!!')
                 break
             else:
 
                 print('downloading', url)
-                YouTube(url).streams.first().download(output_path= Videos_Dir, filename= yt.id + '.mp4')
+                YouTube(url).streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first().download(output_path= Videos_Dir, filename= yt.id + '.mp4')
             
 
         return data    
