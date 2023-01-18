@@ -5,10 +5,11 @@ from step import Step
 class EditVideo(Step):
     def Process(self, data, inputs, utils):
         clips = []
-        for found in data:
+        for found in data: 
             start, end = self.parse_caption_time(found.time)
             video = VideoFileClip(found.yt.get_video_path).subclip(start, end)
             clips.append(video)
+            
             if len(clips) > inputs['limit']:
                 break
         final_clip = concatenate_videoclips(clips)

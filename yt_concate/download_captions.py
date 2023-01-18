@@ -12,6 +12,9 @@ class DownloadCaption(Step):
             if utils.caption_file_exist(yt):
                 print('Found exist caption file.')
                 continue
+            if int(len([name for name in os.listdir(Captions_Dir) if os.path.isfile(os.path.join(Captions_Dir, name))])) > inputs['limit']:
+                print('the numbers of videos are up to 25!!!')
+                break
             try:
 
                 source = YouTube(yt.url)
@@ -20,7 +23,7 @@ class DownloadCaption(Step):
             except AttributeError:
                     print('AttributeError when downloading caption', yt.url)
                     continue
-            text_file = open(utils.get_caption_path(yt.url), "w", encoding= 'utf-8')
+            text_file = open(yt.get_caption_path, "w", encoding= 'utf-8')
             text_file.write(en_caption_convert_to_srt)
             text_file.close()
         return data    
