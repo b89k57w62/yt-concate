@@ -1,5 +1,5 @@
 import os
-
+import shutil
 
 from setting import Captions_Dir
 from setting import Downloads_Dir
@@ -15,6 +15,10 @@ class Utils:
         os.makedirs(Videos_Dir, exist_ok= True)
         os.makedirs(Outputs_Dir, exist_ok= True)
     
+    def delete_file(self, channel_id):
+        shutil.rmtree(Captions_Dir)
+        shutil.rmtree(Videos_Dir)
+        os.remove(self.get_video_list_filepath(channel_id))
     
     
 
@@ -37,5 +41,9 @@ class Utils:
     def output_filepath(self, channel_id, serch_word):
         output_filename = channel_id + '_' + serch_word + '.mp4'
         return os.path.join(Outputs_Dir, output_filename)
+
+    def output_file_exist(self, channel_id, serch_word):
+        path = self.output_filepath(channel_id, serch_word)
+        return os.path.exists(path) and os.path.getsize(path) > 0
 
         
